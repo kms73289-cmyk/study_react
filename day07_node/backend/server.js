@@ -32,17 +32,19 @@ db.connect( (err)=>{
 app.post( "/signup", ( req, res )=>{
     const sql = "insert into login ( `name`, `email`, `password` ) values (?)";
 
+    //이름, 이메일, 비밀번호 가져오기
     const values = [
         req.body.name,
         req.body.email,
         req.body.password
     ]
 
+    //db에 저장
     db.query( sql, [values], (err, data)=>{
         if( err ){
-                return res.json("Error");
+                return res.json("Error");//오류 반환
         }
-        return res.json(data);
+        return res.json(data);//결과 반환
     } )
 } )
 
@@ -51,10 +53,12 @@ app.post( "/login", (req, res)=>{
     
     const sql = "select * from login where `email`=? and `password`=?";
 
+    //이메일, 비밀번호 가져오기
     const values = [
         req.body.email,
         req.body.password
     ]
+
 
     db.query( sql, values, (err, data)=>{
         
@@ -80,6 +84,7 @@ app.post( "/login", (req, res)=>{
 app.post("/withdraw", (req, res)=>{
     const sql='delete from login where `email`=?';
 
+    //이메일 가져오기
     const values = [
         req.body.email
     ]
