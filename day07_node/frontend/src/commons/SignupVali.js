@@ -12,7 +12,7 @@ function SignupVali( values ){//이름, 이메일, 비밀번호 값을 values로
 
     if( values.email == '' ){//이메일 입력칸이 빈칸일 경우
         alert("이메일을 입력하세요");//경고창 띄우기
-        return false;//flase반환
+        return false;//false반환
     }
 
     if( values.password == ''){//비밀번호 입력칸이 빈칸일 경우
